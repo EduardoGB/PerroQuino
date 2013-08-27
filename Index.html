@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+    <head>
+        <link href="ico.png" type="image/x-icon" rel="shortcut icon" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="StyleSheet" href="style.css" type="text/css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>
+            
+            
+            
+            
+            
+        var x ;
+        var xa;
+        var xb;
+        var xc;
+	var y = 250;
+        var x1 =0;
+	var movx = 1;
+	var movy = 2;
+        var al;
+        var animax;
+        var animax2;
+        var caan;var cay; var caa1;
+        var aran; var aral; var ary;
+        var gran; var gral; var gry;
+        var ceran; var ceral; var cery;var cerx=200;
+        var elan; var elal; var ely;
+        var fonan; var fonal;
+        var menan; var menal;
+        var ancho;
+        var brinco=false;
+        var rejas = new Array();
+        var fondo = new Array();
+        var tl;var tl2;
+        var op=0;
+        var val=0;
+        var men=0;
+        var cuenta=0;
+        
+        var ran=0;
+        var elote1 = new Array(22);
+        
+        
+        var elote2 = new Array(22);
+        
+        
+        var elote3 = new Array(22);
+        
+        
+        var elote4 = new Array(22);
+        
+        
+        function sonido(num) {
+            var audio = document.getElementById("sonido" + String(num));
+            audio.play();
+          }
+          function para() {
+            var audio = document.getElementById("sonido1");
+            audio.pause();
+          }
+         
+	$(document).ready(inicio);
+		function inicio(){
+                var canvas = document.getElementById("Game");
+                canvas.addEventListener("mousedown", getPosition, false);
+                sonidoObjetivo = document.getElementById("sonidoObjetivo");
+                sonidoObjetivo2 = document.getElementById("sonidoObjetivo2");
+                var w=window.innerWidth-(window.innerWidth*.015);
+                var h=window.innerHeight-(window.innerHeight*.038);
+                if(w<h){
+                    h=w;
+                }
+                //medidas de la reja
+                
+                
+                y = 250;
+                x1 =0;
+                
+                elote1[0]=1;elote1[2]=1;elote1[3]=1;elote1[4]=2;elote1[5]=3;elote1[6]=2;
+        elote1[7]=1;elote1[7]=1;elote1[7]=1;elote1[8]=0;elote1[9]=0;elote1[10]=1;
+        elote1[11]=1;elote1[12]=1;elote1[13]=1;elote1[14]=0;elote1[15]=0;elote1[16]=1;
+        elote1[17]=2;elote1[18]=3;elote1[19]=2;elote1[20]=1;elote1[21]=1;elote1[22]=1;
+        
+        elote2[0]=1;elote2[2]=0;elote2[3]=1;elote2[4]=2;elote2[5]=3;elote2[6]=2;
+        elote2[7]=1;elote2[7]=1;elote2[7]=1;elote2[8]=0;elote2[9]=0;elote2[10]=1;
+        elote2[11]=1;elote2[12]=1;elote2[13]=1;elote2[14]=0;elote2[15]=0;elote2[16]=1;
+        elote2[17]=2;elote2[18]=3;elote2[19]=2;elote2[20]=1;elote2[21]=1;elote2[22]=1;
+        
+        elote3[0]=1;elote3[2]=1;elote3[3]=1;elote3[4]=2;elote3[5]=3;elote3[6]=2;
+        elote3[7]=1;elote3[7]=1;elote3[7]=1;elote3[8]=0;elote3[9]=0;elote3[10]=1;
+        elote3[11]=1;elote3[12]=1;elote3[13]=1;elote3[14]=0;elote3[15]=0;elote3[16]=1;
+        elote3[17]=2;elote3[18]=3;elote3[19]=2;elote3[20]=1;elote3[21]=1;elote3[22]=1;
+        
+        elote4[0]=1;elote4[2]=1;elote4[3]=1;elote4[4]=2;elote4[5]=3;elote4[6]=2;
+        elote4[7]=1;elote4[7]=1;elote4[7]=1;elote4[8]=0;elote4[9]=0;elote4[10]=1;
+        elote4[11]=1;elote4[12]=1;elote4[13]=1;elote4[14]=0;elote4[15]=0;elote4[16]=1;
+        elote4[17]=2;elote4[18]=3;elote4[19]=2;elote4[20]=1;elote4[21]=1;elote4[22]=1;
+        
+                var dif=h-500;
+                por=(dif/500)*100;
+                fonan=300+((300/100)*por);
+                fonal=500+((500/100)*por);
+                fondo[0]=0;
+                fondo[1]=fonan;
+                fondo[2]=fonan*2;
+                fondo[3]=fonan*3;
+                fondo[4]=fonan*4;
+                
+                caan=100+((100/100)*por);
+                caal=60+((60/100)*por);
+                cay=h/2.5;
+                cery=cay;
+                rejas[0]=0;
+                rejas[1]=caan;
+                rejas[2]=caan*2;
+                rejas[3]=caan*3;
+                rejas[4]=caan*4;
+                rejas[5]=caan*5;
+                rejas[6]=caan*6;
+                rejas[7]=caan*7;
+                rejas[9]=caan*8;
+                rejas[10]=caan*9;
+                rejas[11]=caan*10;
+                rejas[12]=caan*11;
+                
+                ceran=100+((100/100)*por);
+                ceral=80+((80/100)*por);
+                
+                elan=40+((40/100)*por);
+                elal=30+((30/100)*por);
+                //window.alert(elal);
+                ely=h;
+                
+                aran=75+((75/100)*por);
+                aral=100+((100/100)*por);
+                ary=h/4.5;
+                
+                gran=250+((250/100)*por);
+                gral=100+((100/100)*por);
+                
+                menan=200+((200/100)*por);
+                menal=200+((200/100)*por);
+                
+                op=0;
+                
+                tl=30+((20/100)*por);
+                tl2=30+((20/100)*por);
+                al=h;
+                an=w;
+                x=w;
+                
+                xa = x+1250;
+                xb = xa+1250;
+                xc = xb+1250;
+                
+                Game.width=w;
+                Game.height=h;
+                
+                animax=0;
+                animax2=fonan*5;
+		movimiento();
+	}
+        function getPosition(event)
+      {
+        var x = new Number();
+        var y = new Number();
+        var canvas = document.getElementById("Game");
+
+        if (event.x != undefined && event.y != undefined)
+        {
+          x = event.x;
+          y = event.y;
+        }
+        else 
+        {
+          x = event.clientX + document.body.scrollLeft +
+              document.documentElement.scrollLeft;
+          y = event.clientY + document.body.scrollTop +
+              document.documentElement.scrollTop;
+        }
+
+        x -= canvas.offsetLeft;
+        y -= canvas.offsetTop;
+        
+        if((x>=(an/2)-((2.8*tl2)/2) && x<=(an/2)-((1.9*tl2)/2)+(tl*3)) && (y>=al/1.7 && y<=(al/1.7)+tl)  )
+            men=1;//op=1;
+        else if((x>=(an/2)-((2.4*tl2)/2) && x<=(an/2)-((1.4*tl2)/2)+(tl*3)) && (y>=al/1.5 && y<=(al/1.5)+tl)  )
+            men=2;//op=1;
+        
+        if(((x>=an/10) && (x<=(an/10+tl*2))) && ((y>= (al/2)+(al/3)-tl/2) && (y<= (al/2)+(al/3)+tl/3)) && op==1){ 
+            cerx-=8;
+            sonido(2);
+            paint();
+        }
+        else if(((x>=(an/10)*3) && (x<=(((an/10)*3)+tl*2))) && ((y>= (al/2)+(al/3)-tl/2) && (y<= (al/2)+(al/3)+tl/3)) && op==1){ 
+            cerx+=8;
+            sonido(2);
+            paint();
+        }
+        else if(((x>=(an/10)*7) && (x<=(((an/10)*7)+tl*4))) && ((y>= (al/2)+(al/3)-tl/1.5) && (y<= (al/2)+(al/3)+tl/3)) && op==1){ 
+            brinco=true;
+            sonido(2);
+            paint();
+        }
+      }
+	function movimiento(){
+            
+            var game = document.getElementById("Game");
+            var g = game.getContext('2d'); 
+            
+            var img = new Image();
+            img.src = 'cielo.png';
+            for(var i=0;i<fondo.length;i++){
+                fondo[i]-=1;
+                if(fondo[i]<(-1*fonan)){
+                    fondo[i]=fonan*4-10;
+                }
+                if(fondo[i]<-fonan){
+                    fondo[i]=fondo[fondo.length-1]+fonan;
+                }
+                g.drawImage(img, fondo[i],0,fonan,fonal);
+            }
+  
+            if(op==0){
+                
+                
+                g.shadowOffsetX = 5;
+                g.shadowOffsetY = 5;
+                g.shadowBlur = 5;
+                g.shadowColor = "rgba(0, 0, 0, 1)"; 
+                g.font = tl+'px Calibri';
+                g.lineWidth = 3;
+                // stroke color
+                g.strokeStyle = 'blue';
+                
+                if(men==0){
+                    var img = new Image();
+                    img.src = 'menu.png';
+                    g.drawImage(img, an/2-(menan/2),al/14,menan,menal);
+                    var tx=(an/2)-((2.8*tl2)/2);
+                    var t1x=(an/2)-((2.4*tl2)/2);
+                    var ty=al/1.6;
+                    var t1y=al/1.4;
+                    g.strokeText('PUNTUACION: '+cuenta+' ELOTES', (an/2)-((10*tl2)/2), al/8+menal);
+                    g.strokeText('JUGAR', tx, ty);
+                    g.strokeText('SALIR', t1x, t1y);
+                }
+                if(men==1){
+                    var img = new Image();
+                    img.src = 'menu.png';
+                    g.drawImage(img, an/2-(menan/2),al/2-(menal/2),menan,menal);
+                    g.font = tl2+'pt Calibri';
+                    var tx=(an/2)-((3.5*tl2)/2);
+                    var ty=(al/1.7)-((tl2)/9);
+                    g.strokeText('JUGAR', tx, ty);
+                    if(tx<an/5){
+                        op=1;
+                        cuenta=0;
+                    }
+                    tl2+=2;
+                }
+                if(men==2){
+                    var img = new Image();
+                    img.src = 'menu.png';
+                    g.drawImage(img, an/2-(menan/2),al/2-(menal/2),menan,menal);
+                    window.close(); 
+                }
+                
+                g.shadowOffsetX = '';
+                g.shadowOffsetY = '';
+                g.shadowBlur = '';
+                g.shadowColor = ''; 
+            }
+            else if(op==1){
+                sonido(1);    
+                g.shadowOffsetX = 5;
+                g.shadowOffsetY = 5;
+                g.shadowBlur = 5;
+                g.shadowColor = "rgba(0, 0, 0, 1)"; 
+                g.font = (tl-tl/4)+'px Calibri';
+                g.lineWidth = 3;
+                // stroke color
+                g.strokeStyle = 'blue';
+                g.strokeText('PUNTUACION: '+cuenta+' ELOTES', 10, al/20);
+                g.font = (tl)+'px Calibri';
+                g.strokeText('<---- ',an/10, al/2+al/3);
+                g.strokeText('----> ', (an/10)*3, al/2+al/3);
+                g.strokeText('BRINCA ', (an/10)*7, al/2+al/3);
+                g.shadowOffsetX = '';
+                g.shadowOffsetY = '';
+                g.shadowBlur = '';
+                g.shadowColor = ''; 
+
+                var img = new Image();
+                img.src = 'gra.png';
+                g.drawImage(img, animax+fonan-150,ary,gran,gral);
+                var img = new Image();
+                img.src = 'tree.png';
+                g.drawImage(img, animax+(fonan*2)-50,ary,aran,aral);
+                g.drawImage(img, animax+(fonan*3)-50,ary,aran,aral);
+                g.drawImage(img, animax+(fonan*4)-50,ary,aran,aral);
+                var img = new Image();
+                img.src = 'gra.png';
+                g.drawImage(img, animax+(fonan*5)-150,ary,gran,gral);
+                
+                
+                img.src = 'tree.png';
+                g.drawImage(img, animax2+(fonan)-50,ary,aran,aral);
+                img.src = 'gra.png';
+                g.drawImage(img, animax2+(fonan*2)-150,ary,gran,gral);
+                var img = new Image();
+                img.src = 'tree.png';
+                g.drawImage(img, animax2+(fonan*3)-50,ary,aran,aral);
+                g.drawImage(img, animax2+(fonan*4)-50,ary,aran,aral);
+                var img = new Image();
+                img.src = 'gra.png';
+                g.drawImage(img, animax2+(fonan*5)-150,ary,gran,gral);
+                
+                for(var i=0;i<rejas.length;i++){
+                    rejas[i]-=1;
+                    if(rejas[i]<(-1*caan)){
+                        rejas[i]=caan*11;
+                    }
+                    paint2(rejas[i]);
+                }
+
+
+                paint();
+                
+                
+                
+                
+                aux=50;
+                for(var i=0;i<elote1.length;i++){
+                    var img = new Image();
+                    if(elote1[i]==0){
+                        
+                    }
+                    else if(elote1[i]==1){
+                        
+                        img.src = 'elote.png';
+                        g.drawImage(img, x+aux,ely/2.2,elan,elal);
+                        valida(x+aux,ely/2.2,1,i,1);
+                    }
+                    else if(elote1[i]==2){
+                        img.src = 'elote.png';
+                        g.drawImage(img, x+aux,ely/2.4,elan,elal);
+                        valida(x+aux,ely/2.2,1,i,2);
+                    }
+                    else if(elote1[i]==3 || elote1[i]==4){
+                        if(elote1[i]==3){
+                        img.src = 'elote.png';
+                        g.drawImage(img, x+aux,ely/2.6,elan,elal);
+                        valida(x+aux,ely/2.2,1,i,3);
+                        }
+                        img.src = 'lodo.png';
+                        g.drawImage(img, x+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                        
+                       validal(x+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                    }
+                    aux+=50;
+                }
+                aux=50;
+                //alert(x+"   "+xa+"   "+xb+"   "+xc);
+                for(var i=0;i<elote2.length;i++){
+                    var img = new Image();
+                    if(elote2[i]==0){
+                        
+                    }
+                    else if(elote2[i]==1){
+                        
+                        img.src = 'elote.png';
+                        g.drawImage(img, xa+aux,ely/2.2,elan,elal);
+                        valida(xa+aux,ely/2.2,2,i,1);
+                    }
+                    else if(elote2[i]==2){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xa+aux,ely/2.4,elan,elal);
+                        valida(xa+aux,ely/2.2,2,i,2);
+                    }
+                    else if(elote2[i]==3 || elote2[i]==4){
+                        if(elote2[i]==3){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xa+aux,ely/2.6,elan,elal);
+                        valida(xa+aux,ely/2.2,2,i,3);
+                        }
+                        img.src = 'lodo.png';
+                        g.drawImage(img, xa+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                        
+                        validal(xa+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                    }
+                    aux+=50;
+                }
+                
+                aux=50;
+                for(var i=0;i<elote3.length;i++){
+                    var img = new Image();
+                    if(elote3[i]==0){
+                        
+                    }
+                    else if(elote3[i]==1){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xb+aux,ely/2.2,elan,elal);
+                        valida(xb+aux,ely/2.2,3,i,1);
+                    }
+                    else if(elote3[i]==2){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xb+aux,ely/2.4,elan,elal);
+                        var img = new Image();
+                        valida(xb+aux,ely/2.4,3,i,2);
+                    }
+                    else if(elote3[i]==3 || elote3[i]==4){
+                        if(elote3[i]==3){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xb+aux,ely/2.6,elan,elal);
+                        valida(xb+aux,ely/2.6,3,i,3);
+                        }
+                        img.src = 'lodo.png';
+                        g.drawImage(img, xb+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                        
+                        validal(xb+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                    }
+                    aux+=50;
+                }
+                
+                aux=50;
+                for(var i=0;i<elote4.length;i++){
+                    var img = new Image();
+                    if(elote4[i]==0){
+                        
+                    }
+                    else if(elote4[i]==1){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xc+aux,ely/2.2,elan,elal);
+                        valida(xc+aux,ely/2.2,4,i,1);
+                    }
+                    else if(elote4[i]==2){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xc+aux,ely/2.4,elan,elal);
+                        var img = new Image();
+                        valida(xc+aux,ely/2.4,4,i,2);
+                    }
+                    else if(elote4[i]==3 || elote4[i]==4){
+                        if(elote4[i]==3){
+                        img.src = 'elote.png';
+                        g.drawImage(img, xc+aux,ely/2.6,elan,elal);
+                        valida(xc+aux,ely/2.6,4,i,3);
+                        }
+                        img.src = 'lodo.png';
+                        g.drawImage(img, xc+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                        validal(xc+aux,cay+(ceral/2),ceran/1.8,ceral/1.5);
+                    }
+                    aux+=50;
+                }
+                
+                x1+=1;
+
+                x-=1;
+                xa-=1;
+                xb-=1;
+                xc-=1;
+                
+                
+                if(x<-2400){
+                    x=xc+1250;
+                    elote1[0]=1;elote1[2]=1;elote1[3]=1;elote1[4]=2;elote1[5]=3;elote1[6]=2;
+                     elote1[7]=1;elote1[7]=1;elote1[7]=1;elote1[8]=0;elote1[9]=0;elote1[10]=1;
+                    elote1[11]=1;elote1[12]=1;elote1[13]=1;elote1[14]=0;elote1[15]=0;elote1[16]=1;
+                    elote1[17]=2;elote1[18]=3;elote1[19]=2;elote1[20]=1;elote1[21]=1;elote1[22]=1;
+                }
+                else if(xa<-2400){
+                    xa=x+1250;
+                    elote2[0]=1;elote2[2]=1;elote2[3]=1;elote2[4]=2;elote2[5]=3;elote2[6]=2;
+                    elote2[7]=1;elote2[7]=1;elote2[7]=1;elote2[8]=0;elote2[9]=0;elote2[10]=1;
+                    elote2[11]=1;elote2[12]=1;elote2[13]=1;elote2[14]=0;elote2[15]=0;elote2[16]=1;
+                    elote2[17]=2;elote2[18]=3;elote2[19]=2;elote2[20]=1;elote2[21]=1;elote2[22]=1;
+                }
+                else if(xb<-2400){
+                    xb=xa+1250;
+                    elote3[0]=1;elote3[2]=1;elote3[3]=1;elote3[4]=2;elote3[5]=3;elote3[6]=2;
+                    elote3[7]=1;elote3[7]=1;elote3[7]=1;elote3[8]=0;elote3[9]=0;elote3[10]=1;
+                    elote3[11]=1;elote3[12]=1;elote3[13]=1;elote3[14]=0;elote3[15]=0;elote3[16]=1;
+                    elote3[17]=2;elote3[18]=3;elote3[19]=2;elote3[20]=1;elote3[21]=1;elote3[22]=1;
+                }
+                else if(xc<-2400){
+                    xc=xb+1250;
+                    elote4[0]=1;elote4[2]=1;elote4[3]=1;elote4[4]=2;elote4[5]=3;elote4[6]=2;
+                    elote4[7]=1;elote4[7]=1;elote4[7]=1;elote4[8]=0;elote4[9]=0;elote4[10]=1;
+                    elote4[11]=1;elote4[12]=1;elote4[13]=1;elote4[14]=0;elote4[15]=0;elote4[16]=1;
+                    elote4[17]=2;elote4[18]=3;elote4[19]=2;elote4[20]=1;elote4[21]=1;elote4[22]=1;
+                }
+                
+                
+                
+                animax-=1;
+                animax2-=1;
+                if(animax<fonan*-5){
+                    animax=animax2+fonan*5
+                }
+                else if(animax2<fonan*-5){
+                    animax2=animax+fonan*5
+                }
+            }
+            setTimeout("movimiento()",25);    
+	}
+        function valida(ex,ey,num,i,res){
+            if(((ex<=(cerx+ceran) && ex>=(cerx)) || (ex+elan<=(cerx+ceran) && ex+elan>=(cerx))) && (((ey>=(cery)) && (ey)<=(cery+ceral)) || ((ey+elal>=(cery)) && (ey+elal)<=(cery+ceral)) ) ){
+                if(num==1){
+                    if(res==3){
+                        elote1[i]=4;
+                        cuenta++;
+                    }
+                    else{
+                        elote1[i]=0;
+                        cuenta++;
+                    }
+                    
+                    sonido(3);
+                    
+                }
+                else if(num==2){
+                    if(res==3){
+                        elote2[i]=4;
+                        cuenta++;
+                    }
+                    else{
+                        elote2[i]=0;
+                        cuenta++;
+                    }
+                    sonido(3);
+                    
+                }
+                else if(num==3){
+                    if(res==3){
+                        elote3[i]=4;
+                        cuenta++;
+                    }
+                    else{
+                        elote3[i]=0;
+                        cuenta++;
+                    }
+                    sonido(3);
+                    
+                }
+                else if(num==4){
+                    if(res==3){
+                        elote4[i]=4;
+                        cuenta++;
+                    }
+                    else{
+                        elote4[i]=0;
+                        cuenta++;
+                    }
+
+                    sonido(3);
+                    
+                }
+            }
+            
+                
+            }
+        function validal(xl,yl,anl,all){
+            if(((xl<(cerx+ceran) && xl>(cerx))) && (((yl>(cery)) && (yl)<(cery+ceral)) || (((yl+ceral/1.5)>(cery)) && (yl+ceral/1.5)<(cery+ceral)))){
+                op=0;
+                men=0;
+                para();
+                inicio();
+            }
+        }
+        function paint(){
+            var game = document.getElementById("Game");
+            var g = game.getContext('2d'); 
+            var img = new Image();
+            if(x1%10==0){
+                img.src = 'cer1.png';
+                g.drawImage(img, cerx,cery,ceran,ceral);
+            }
+            else{
+                img.src = 'cer2.png';
+                g.drawImage(img, cerx,cery,ceran,ceral);
+            }   
+            
+            if(brinco===true){
+                if(((cery+ceral/2)>ely/2.6) && val==0 ){
+                    cery-=2;
+                    cerx+=4;
+                }
+                else {
+                    val=1;
+                    cery+=2;
+                    cerx+=6;
+                    if(cery>=cay){
+                        brinco=false;
+                        val=0;
+                    }
+                }
+                
+            }
+            
+        }
+        function paint2(posx){
+            var game = document.getElementById("Game");
+            var g = game.getContext('2d'); 
+            var img = new Image();
+            img.src = 'camino.png';
+            g.drawImage(img, posx,cay,caan,caal);
+            g.fillStyle = "#ecb171";
+            g.beginPath();
+            g.moveTo(posx,cay+caal);
+            g.lineTo(an,cay+caal);
+            g.lineTo(an,(cay+caal)+caal/2);
+            g.lineTo(posx,(cay+caal)+caal/2);
+            g.closePath();
+            g.fill();
+            g.lineWidth = 0;
+            g.strokeStyle = '#ecb171';
+            g.stroke();
+            var img = new Image();
+            img.src = 'camino2.png';
+            g.drawImage(img,posx,(cay+caal)+caal/2,caan,caal);
+        }
+        function whichButton(event){
+            if(op==1){
+            if(event.keyCode=='38'){
+                brinco=true;
+                sonido(2);
+                paint();
+            }
+
+            
+            if(event.keyCode=='39'){
+                cerx+=8;
+                sonido(2);
+                paint();
+            }
+
+            if(event.keyCode=='37'){
+            cerx-=8;
+            sonido(2);
+            paint();
+            }
+        }}
+        </script>
+        <title></title>
+    </head>
+    
+    <body style="background-color: #E0E6F8; " onkeydown="whichButton(event)" onresize="inicio()">
+      <canvas id="Game" width="1000px" height="1000px" style="border:2px solid #000; position: absolute; left: 0px;top: 0px;">
+Canvas not supported by your browser.
+</canvas>  
+        <audio id="sonido3">
+        <source src="comer.wav" type="audio/wav" />
+        Este navegador no soporta HTML5 Audio
+        </audio>
+         <audio id="sonido2">
+        <source src="uiii.wav" type="audio/wav" />
+        Este navegador no soporta HTML5 Audio
+        </audio>
+        <audio id="sonido1">
+        <source src="back.wav" type="audio/wav" />
+        Este navegador no soporta HTML5 Audio
+        </audio>
+
+    </body>
+</html>
